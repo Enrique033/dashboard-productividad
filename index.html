@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Productividad Ejecutiva</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="container">
+
+    <h1>📊 Dashboard de Productividad</h1>
+
+    <!-- ================= CONFIGURACIÓN ================= -->
+    <div class="resumen-section">
+        <h2>Configuración del Día</h2>
+
+        <div class="config-grid">
+            <div>
+                <label>Hora inicio</label>
+                <input type="time" id="horaInicio">
+            </div>
+
+            <div>
+                <label>Hora fin</label>
+                <input type="time" id="horaFin">
+            </div>
+
+            <div>
+                <label>Meta por hora</label>
+                <input type="number" id="metaHora" value="3" min="1">
+            </div>
+
+            <div class="config-button">
+                <button onclick="guardarConfiguracion()">
+                    Guardar
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ================= REGISTRO ================= -->
+    <div class="form-section">
+        <h2>Registrar Actividad</h2>
+
+        <div class="registro-grid">
+
+            <div>
+                <input 
+                    type="text" 
+                    id="ticketInput" 
+                    placeholder="Ticket (7-8 dígitos)"
+                    maxlength="8"
+                >
+                <button onclick="agregarAccionable()">
+                    + Accionable (1)
+                </button>
+            </div>
+
+            <div>
+                <button onclick="agregarNoAccionable()">
+                    + Conversación (0.5)
+                </button>
+            </div>
+
+        </div>
+
+        <p id="mensaje"></p>
+    </div>
+
+
+    <!-- ================= KPI ================= -->
+    <div class="resumen-section">
+        <h2>Resumen del Día</h2>
+<div class="acciones-header">
+
+    <div class="acciones-derecha">
+
+        <button onclick="exportarExcel()" class="export-btn">
+            📥 Exportar
+        </button>
+
+        <div class="reset-container">
+            <label>Eliminar día:</label>
+            <select id="selectorDia"></select>
+
+            <button onclick="eliminarDia()" class="reset-btn">
+                🗑 Reset Día
+            </button>
+        </div>
+
+    </div>
+
+</div>
+
+        <p><strong>Fecha:</strong> <span id="fechaActual"></span></p>
+        <p><strong>Horas trabajadas:</strong> <span id="horasTrabajadas">0</span></p>
+
+        <div class="kpi-grid">
+
+            <div class="kpi-card">
+                <h3>Meta del día</h3>
+                <p id="metaDia">0</p>
+            </div>
+
+            <div class="kpi-card">
+                <h3>Accionables</h3>
+                <p id="accionablesHoy">0</p>
+            </div>
+
+            <div class="kpi-card">
+                <h3>No accionables</h3>
+                <p id="noAccionablesHoy">0</p>
+            </div>
+
+            <div class="kpi-card">
+                <h3>Avance ponderado</h3>
+                <p id="avanceTotal">0%</p>
+            </div>
+
+            <div class="kpi-card">
+    <h3>Meta esperada ahora</h3>
+    <p id="metaActual">0</p>
+</div>
+
+<div class="kpi-card">
+    <h3>Desfase actual</h3>
+    <p id="desfaseActual">0</p>
+</div>
+
+        </div>
+
+        <div class="progress-container">
+            <div class="progress-bar" id="barraProgreso"></div>
+        </div>
+
+    </div>
+
+
+    <!-- ================= HISTORIAL ================= -->
+    <div class="historial-section">
+        <h2>Historial</h2>
+        <div id="historial"></div>
+    </div>
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
